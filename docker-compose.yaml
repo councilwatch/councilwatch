@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  database:
+    image: postgres:18
+    environment:
+      - POSTGRES_DB=councilwatch
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - councilwatch_data:/var/lib/postgresql/data
+
+volumes:
+  councilwatch_data:

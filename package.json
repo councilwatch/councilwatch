@@ -1,0 +1,42 @@
+{
+  "name": "councilwatch",
+  "version": "1.0.0",
+  "description": "A tool to monitor city council activities",
+  "author": "councilwatch",
+  "license": "AGPL-3.0",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/councilwatch/councilwatch/issues"
+  },
+  "homepage": "https://github.com/councilwatch/councilwatch#readme",
+  "scripts": {
+    "start:server": "npm run start:dev --workspace=packages/server",
+    "start:client": "npm run start:dev --workspace=packages/client",
+    "test:server": "npm run test --workspace=packages/server",
+    "test:client": "npm run test --workspace=packages/client",
+    "check": "biome check --write",
+    "build:server": "npm run build --workspace=packages/server",
+    "build:client": "npm run build --workspace=packages/client",
+    "migration:create": "node ./scripts/migration.mjs ./packages/server/src/common/migrations",
+    "migration:run": "npm run migration:run --workspace=packages/server",
+    "migration:revert": "npm run migration:revert --workspace=packages/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/councilwatch/councilwatch.git"
+  },
+  "workspaces": [
+    "packages/server",
+    "packages/client"
+  ],
+  "keywords": [
+    "council",
+    "government",
+    "agenda",
+    "watch",
+    "surveillance;"
+  ],
+  "devDependencies": {
+    "@biomejs/biome": "2.2.6"
+  }
+}
