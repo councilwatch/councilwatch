@@ -5,6 +5,10 @@ This is a living document that outlines the architecture for CouncilWatch.
 > [!WARNING]
 > This document is a work in progress and is subject to change. Very little has been set in stone and pretty much everything is open for discussion.
 
+## CDN
+
+We will use [Cloudflare](https://www.cloudflare.com/) as our Content Delivery Network (CDN) to serve a cached version of our front end application and potentially API requests. This is to improve performance and reduce the load on our back end infrastructure.
+
 ## Back End Server
 
 The various CouncilWatch back end components will be hosted on a yet to be determined VPS provider. The back end application will be built using [NestJS](https://nestjs.com/) and [TypeScript](https://www.typescriptlang.org/), which will expose a RESTful API for the front end to consume. The NestJS application will be responsible for:
