@@ -186,47 +186,6 @@ When moderator approves an item:
 
 ---
 
-## Development Phases
-
-### Phase 1: MVP (Months 1-2)
-- Manual data entry (no automation yet)
-- Basic signup & notification system
-- Simple calendar view (no map)
-- 10 test cities
-
-### Phase 2: Integration (Months 3-4)
-- Connect to data source API
-- Add moderation queue
-- Implement map view
-- Expand to 500 cities
-
-### Phase 3: Scale (Months 5-6)
-- Full 18,000+ municipality coverage
-- Advanced filtering options
-- Mobile app consideration
-- Analytics dashboard
-
----
-
-## Success Metrics
-- Number of users registered
-- Meetings identified vs. false positives
-- Citizen attendance at flagged meetings
-- Surveillance proposals defeated
-- Email open/click rates
-- Geographic coverage of users
-
----
-
-## Budget Considerations
-- Data source subscription: $1,000-3,000/month
-- Web hosting: $100-500/month
-- Email service: $100-300/month (SendGrid/Mailgun)
-- Development: $15,000-30,000 initial build
-- Ongoing maintenance: $1,000-2,000/month
-
----
-
 ## Alternative Approaches If No Enterprise Platform Available
 If Curate/similar is too expensive or unavailable:
 1. Start with Legistar API (covers 7,000 cities) as proof of concept
