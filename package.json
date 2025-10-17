@@ -37,6 +37,9 @@
     "surveillance;"
   ],
   "devDependencies": {
-    "@biomejs/biome": "2.2.6"
+    "@biomejs/biome": "2.2.6",
+    "@types/node": "24.8.0",
+    "globals": "16.4.0",
+    "typescript": "5.9.3"
   }
 }
