@@ -1,0 +1,5 @@
+.links {
+  display: flex;
+  flex-grow: 1;
+  margin-left: calc(var(--mui-spacing) * 4) 
+}

@@ -17,6 +17,7 @@
     "check": "biome check --write",
     "build:server": "npm run build --workspace=packages/server",
     "build:client": "npm run build --workspace=packages/client",
+    "prerender": "npm run prerender --workspace=packages/client",
     "migration:create": "node ./scripts/migration.mjs ./packages/server/src/common/migrations",
     "migration:run": "npm run migration:run --workspace=packages/server",
     "migration:revert": "npm run migration:revert --workspace=packages/server"

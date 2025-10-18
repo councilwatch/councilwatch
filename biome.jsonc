@@ -32,7 +32,8 @@
       "arrowParentheses": "always",
       "semicolons": "always",
       "trailingCommas": "all",
-      "lineWidth": 110
+      "lineWidth": 110,
+      "jsxQuoteStyle": "single"
     },
     "parser": {
       "unsafeParameterDecoratorsEnabled": true // https://github.com/biomejs/biome/issues/2261#issuecomment-2029455132
