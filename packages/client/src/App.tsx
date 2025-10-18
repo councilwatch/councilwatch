@@ -1,32 +1,38 @@
-import { useState } from 'react';
-import viteLogo from '/vite.svg';
-import reactLogo from './assets/react.svg';
-import './App.css';
+// src/App.tsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import UserRegistration from './pages/UserRegistration';
+import ReviewerDashboard from './pages/ReviewerDashboard';
+import AgendaReview from './pages/AgendaReview';
+import MeetingCreation from './pages/MeetingCreation';
+import MeetingsInspect from './pages/MeetingsInspect';
+import MeetingRSVP from './pages/MeetingRSVP';
+import ReviewerInvitation from './pages/ReviewerInvitation';
+import ReviewerRegistration from './pages/ReviewerRegistration';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank" rel="noopener">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noopener">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="app">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<UserRegistration />} />
+            <Route path="/reviewer/dashboard" element={<ReviewerDashboard />} />
+            <Route path="/reviewer/agendas" element={<AgendaReview />} />
+            <Route path="/reviewer/meetings/create" element={<MeetingCreation />} />
+            <Route path="/meetings" element={<MeetingsInspect />} />
+            <Route path="/meetings/:id/rsvp" element={<MeetingRSVP />} />
+            <Route path="/reviewer/invite" element={<ReviewerInvitation />} />
+            <Route path="/reviewer/register" element={<ReviewerRegistration />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="submit" onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    </Router>
   );
 }
 
