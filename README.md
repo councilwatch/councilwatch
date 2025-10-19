@@ -67,3 +67,29 @@ npm run build:server
 # Build client
 npm run build:client
 ```
+
+## Running for Production with Docker
+
+### Requirements
+| Application                        | Link                                    |
+| ---------------------------------- | --------------------------------------- |
+| Docker                             | https://www.docker.com                  |
+| Docker-Compose addon (if on linux) | https://docs.docker.com/compose/install |
+
+### Running 
+
+> [!IMPORTANT]  
+> Depending on your system. The commands below may instead be `docker-compose` (notice the hyphen). It also may require running as root (or with sudo)
+
+First, clone the repository
+```bash
+git clone https://github.com/councilwatch/councilwatch.git
+cd councilwatch
+```
+
+Then, run docker compose
+```bash
+docker compose up -d
+```
+
+And the server should be accessible on port 8080
