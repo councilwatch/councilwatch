@@ -12,7 +12,7 @@ COPY . .
 RUN npm run build:client
 
 
-# Run the clinet with nginx
+# Run the client with nginx
 FROM nginxinc/nginx-unprivileged
 COPY --from=build /councilwatch/packages/client/dist /usr/share/nginx/html
 
