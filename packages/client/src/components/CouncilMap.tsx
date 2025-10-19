@@ -1,9 +1,11 @@
+import type { FC } from 'react';
+
 interface CouncilMapProps {
   zipCode: string;
   setCouncilId: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-export const CouncilMap = ({ zipCode, setCouncilId }: CouncilMapProps) => {
+export const CouncilMap: FC<CouncilMapProps> = ({ zipCode, setCouncilId }) => {
   // This is just a skeleton for the map module. Idea is for the state and setState to be
   // passed into the map component. If zipCode is an empty string it will show the fully
   // zoomed out map. If a valid zip is provided, it will zoom in to an area surrounding
