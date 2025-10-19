@@ -1,7 +1,7 @@
 // src/pages/ReviewerDashboard.tsx
 import React from 'react';
 
-const ReviewerDashboard: React.FC = () => {
+export const ReviewerDashboard: React.FC = () => {
   return (
     <div>
       <h2>Reviewer Dashboard</h2>
@@ -17,5 +17,3 @@ const ReviewerDashboard: React.FC = () => {
     </div>
   );
 };
-
-export default ReviewerDashboard;

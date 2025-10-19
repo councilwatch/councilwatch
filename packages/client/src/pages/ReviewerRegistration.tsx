@@ -1,7 +1,7 @@
 // src/pages/ReviewerRegistration.tsx
 import React from 'react';
 
-const ReviewerRegistration: React.FC = () => {
+export const ReviewerRegistration: React.FC = () => {
   return (
     <div>
       <h2>Reviewer Registration</h2>
@@ -15,5 +15,3 @@ const ReviewerRegistration: React.FC = () => {
     </div>
   );
 };
-
-export default ReviewerRegistration;

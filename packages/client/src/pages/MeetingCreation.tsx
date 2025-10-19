@@ -1,7 +1,7 @@
 // src/pages/MeetingCreation.tsx
 import React from 'react';
 
-const MeetingCreation: React.FC = () => {
+export const MeetingCreation: React.FC = () => {
   return (
     <div>
       <h2>Create Meeting</h2>
@@ -17,5 +17,3 @@ const MeetingCreation: React.FC = () => {
     </div>
   );
 };
-
-export default MeetingCreation;
