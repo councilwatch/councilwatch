@@ -8,6 +8,9 @@ CouncilWatch is an open-source platform that monitors and alerts people of agend
 
 ## Development
 
+> [!IMPORTANT]  
+> Depending on your system. The docker commands below may instead be `docker-compose` (notice the hyphen). It also may require running as root (or with sudo)
+
 ### Requirements
 
 | Application | Version | Link                        |
@@ -37,7 +40,7 @@ cp docs/.env.development.example packages/server/.env.development
 
 ```bash
 # Start the database
-docker compose -f docker-compose.yaml up -d
+docker compose run --rm -d -p 5432:5432 database
 
 # Start the server
 npm run start:server
@@ -77,9 +80,6 @@ npm run build:client
 | Docker-Compose addon (if on linux) | https://docs.docker.com/compose/install |
 
 ### Running 
-
-> [!IMPORTANT]  
-> Depending on your system. The commands below may instead be `docker-compose` (notice the hyphen). It also may require running as root (or with sudo)
 
 First, clone the repository
 ```bash
