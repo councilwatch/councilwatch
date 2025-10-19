@@ -1,21 +1,23 @@
 services:
   councilwatch-server:
-    build: .
+    build:
+      context: .
+      dockerfile: server.Dockerfile
     environment:
       - DATABASE_URL=postgres://postgres:postgres@database:5432/councilwatch
     networks:
       - backend
       - frontend
-    command: ["start:server"]
 
 
   councilwatch-client:
-    build: .
+    build:
+      context: .
+      dockerfile: client.Dockerfile
     ports:
       - 5173:5173
     networks:
       - frontend
-    command: ["start:client"]
 
   database:
     image: "postgres:18"
