@@ -1,5 +1,7 @@
+name: councilwatch
+
 services:
-  councilwatch-server:
+  server:
     build:
       context: .
       dockerfile: server.Dockerfile
@@ -10,12 +12,12 @@ services:
       - frontend
 
 
-  councilwatch-client:
+  client:
     build:
       context: .
       dockerfile: client.Dockerfile
     ports:
-      - 5173:5173
+      - 8080:8080
     networks:
       - frontend
 
