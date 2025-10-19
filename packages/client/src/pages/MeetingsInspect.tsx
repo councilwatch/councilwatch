@@ -1,7 +1,7 @@
 // src/pages/MeetingsInspect.tsx
 import React from 'react';
 
-const MeetingsInspect: React.FC = () => {
+export const MeetingsInspect: React.FC = () => {
   return (
     <div>
       <h2>Inspect Meetings</h2>
@@ -15,5 +15,3 @@ const MeetingsInspect: React.FC = () => {
     </div>
   );
 };
-
-export default MeetingsInspect;

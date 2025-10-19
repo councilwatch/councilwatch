@@ -1,7 +1,7 @@
 // src/pages/ReviewerInvitation.tsx
 import React from 'react';
 
-const ReviewerInvitation: React.FC = () => {
+export const ReviewerInvitation: React.FC = () => {
   return (
     <div>
       <h2>Invite Reviewer</h2>
@@ -13,5 +13,3 @@ const ReviewerInvitation: React.FC = () => {
     </div>
   );
 };
-
-export default ReviewerInvitation;

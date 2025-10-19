@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear(); // Dynamically get the current year
   return (
     <footer>
@@ -8,5 +8,3 @@ const Footer: React.FC = () => {
     </footer>
   );
 };
-
-export default Footer;

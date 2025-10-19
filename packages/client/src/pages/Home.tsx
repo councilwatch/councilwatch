@@ -1,7 +1,7 @@
 // src/pages/Home.tsx
 import React from 'react';
 
-const Home: React.FC = () => {
+export const Home: React.FC = () => {
   return (
     <div>
       <h2>Welcome to CouncilWatch</h2>
@@ -10,5 +10,3 @@ const Home: React.FC = () => {
     </div>
   );
 };
-
-export default Home;

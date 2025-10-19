@@ -1,7 +1,7 @@
 // src/pages/AgendaReview.tsx
 import React from 'react';
 
-const AgendaReview: React.FC = () => {
+export const AgendaReview: React.FC = () => {
   return (
     <div>
       <h2>Review Agendas</h2>
@@ -13,5 +13,3 @@ const AgendaReview: React.FC = () => {
     </div>
   );
 };
-
-export default AgendaReview;

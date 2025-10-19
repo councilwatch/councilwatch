@@ -2,7 +2,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-const MeetingRSVP: React.FC = () => {
+export const MeetingRSVP: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   return (
     <div>
@@ -23,5 +23,3 @@ const MeetingRSVP: React.FC = () => {
     </div>
   );
 };
-
-export default MeetingRSVP;

@@ -1,7 +1,7 @@
 // src/pages/UserRegistration.tsx
 import React from 'react';
 
-const UserRegistration: React.FC = () => {
+export const UserRegistration: React.FC = () => {
   return (
     <div>
       <h2>User Registration</h2>
@@ -21,5 +21,3 @@ const UserRegistration: React.FC = () => {
     </div>
   );
 };
-
-export default UserRegistration;

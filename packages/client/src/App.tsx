@@ -1,18 +1,18 @@
 // src/App.tsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import UserRegistration from './pages/UserRegistration';
-import ReviewerDashboard from './pages/ReviewerDashboard';
-import AgendaReview from './pages/AgendaReview';
-import MeetingCreation from './pages/MeetingCreation';
-import MeetingsInspect from './pages/MeetingsInspect';
-import MeetingRSVP from './pages/MeetingRSVP';
-import ReviewerInvitation from './pages/ReviewerInvitation';
-import ReviewerRegistration from './pages/ReviewerRegistration';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { Home } from './pages/Home';
+import { UserRegistration } from './pages/UserRegistration';
+import { ReviewerDashboard } from './pages/ReviewerDashboard';
+import { AgendaReview } from './pages/AgendaReview';
+import { MeetingCreation } from './pages/MeetingCreation';
+import { MeetingsInspect } from './pages/MeetingsInspect';
+import { MeetingRSVP } from './pages/MeetingRSVP';
+import { ReviewerInvitation } from './pages/ReviewerInvitation';
+import { ReviewerRegistration } from './pages/ReviewerRegistration';
 
-function App() {
+export const App = () => {
   return (
     <Router>
       <div className="app">
@@ -34,6 +34,4 @@ function App() {
       </div>
     </Router>
   );
-}
-
-export default App;
+};
