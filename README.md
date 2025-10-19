@@ -39,7 +39,7 @@ cp docs/.env.development.example packages/server/.env.development
 ### Running
 
 ```bash
-# Start the database
+# Start the database. This will return a string of numbers and letters
 docker compose run --rm -d -p 5432:5432 database
 
 # Start the server
@@ -47,6 +47,9 @@ npm run start:server
 
 # Start the client
 npm run start:client
+
+# After running, stop the database
+docker container stop <that string of numbers and letters>
 ```
 
 ### Testing
