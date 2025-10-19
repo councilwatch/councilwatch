@@ -7,7 +7,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start:dev": "vite --host 0.0.0.0",
+    "start:dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
