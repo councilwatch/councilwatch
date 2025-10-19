@@ -1,0 +1,9 @@
+**/node_modules/
+**/dist/
+**/build/
+**/out/
+
+# Docs shouldn't be needed to build the docker image
+/docs
+/README.md
+/LICENSE
