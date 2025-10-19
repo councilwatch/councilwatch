@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM node:alpine3.21
+FROM node:22-alpine
 WORKDIR /councilwatch
 
 COPY package.json package-lock.json .
