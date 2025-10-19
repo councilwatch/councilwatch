@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 interface HeroProps {
   title: string;
   subtitle?: string;
@@ -6,7 +8,7 @@ interface HeroProps {
   ctaOnClick?: () => void;
 }
 
-export const Hero = ({ title, subtitle, backgroundImage, ctaLabel, ctaOnClick }: HeroProps) => (
+export const Hero: FC<HeroProps> = ({ title, subtitle, backgroundImage, ctaLabel, ctaOnClick }) => (
   <section style={{ backgroundImage: `url(${backgroundImage})` }}>
     <h1>{title}</h1>
     {subtitle && <p>{subtitle}</p>}
