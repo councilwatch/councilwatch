@@ -9,7 +9,7 @@ CouncilWatch is an open-source platform that monitors and alerts people of agend
 ## Development
 
 > [!IMPORTANT]  
-> Depending on your system. The docker commands below may instead be `docker-compose` (notice the hyphen). It also may require running as root (or with sudo)
+> Depending on your system. The docker compose commands below may instead be `docker-compose` (notice the hyphen). It also may require running as root (or with sudo)
 
 ### Requirements
 
