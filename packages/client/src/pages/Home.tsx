@@ -1,12 +1,15 @@
-// src/pages/Home.tsx
-import React from 'react';
+import { HomeCouncilMap } from '../sections/Home/CouncilMap';
+import { HomeCTA } from '../sections/Home/CTA';
+import { HomeFeed } from '../sections/Home/Feed';
+import { HomeHero } from '../sections/Home/Hero';
 
-export const Home: React.FC = () => {
+export const Home = () => {
   return (
-    <div>
-      <h2>Welcome to CouncilWatch</h2>
-      <p>We believe city councils behave better under surveillance. Stay informed about local agenda items related to surveillance.</p>
-      {/* Placeholder for introductory content, call to action */}
-    </div>
+    <main>
+      <HomeHero />
+      <HomeCTA />
+      <HomeCouncilMap />
+      <HomeFeed />
+    </main>
   );
 };
