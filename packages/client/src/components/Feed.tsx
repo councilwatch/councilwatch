@@ -1,10 +1,11 @@
+import type { FC } from 'react';
 import type { EventInfo } from '../types';
 
 interface FeedProps {
   eventList: EventInfo[];
 }
 
-export const Feed = ({ eventList }: FeedProps) => {
+export const Feed: FC<FeedProps> = ({ eventList }) => {
   return (
     <div>
       {eventList.map((event) => {

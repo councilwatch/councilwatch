@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 interface CTAProps {
   title: string;
   subtitle?: string;
@@ -6,7 +8,7 @@ interface CTAProps {
   buttonOnClick: () => void;
 }
 
-export const CTA = ({ title, subtitle, blurb, buttonLabel, buttonOnClick }: CTAProps) => (
+export const CTA: FC<CTAProps> = ({ title, subtitle, blurb, buttonLabel, buttonOnClick }) => (
   <section>
     <h2>{title}</h2>
     {subtitle && <h3>{subtitle}</h3>}
