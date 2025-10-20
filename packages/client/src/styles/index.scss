@@ -24,3 +24,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.app > .navbar + main {
+  /* make Header not hide top of main page content */
+  margin-top: vars.$header-height;
+}
