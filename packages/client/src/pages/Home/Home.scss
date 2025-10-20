@@ -2,7 +2,6 @@
 
 .home {
     @include mixins.flex-center(column, 40px);
-    padding: 0 20px 20px;
 
     section {
         @include mixins.flex-center(column);

@@ -28,4 +28,6 @@ code {
 .app > .navbar + main {
   /* make Header not hide top of main page content */
   margin-top: vars.$header-height;
+ 
+  padding: 0 20px 20px;
 }
