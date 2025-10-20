@@ -1,3 +1,5 @@
+import './CTA.scss';
+
 import type { FC } from 'react';
 
 interface CTAProps {
@@ -9,12 +11,12 @@ interface CTAProps {
 }
 
 export const CTA: FC<CTAProps> = ({ title, subtitle, blurb, buttonLabel, buttonOnClick }) => (
-  <section>
-    <h2>{title}</h2>
-    {subtitle && <h3>{subtitle}</h3>}
-    <p>{blurb}</p>
-    <button type="button" onClick={buttonOnClick}>
+  <div className="cta">
+    <h2 className="cta__title">{title}</h2>
+    {subtitle && <h3 className="cta__subtitle">{subtitle}</h3>}
+    <p className="cta__blurb">{blurb}</p>
+    <button className="cta__button" type="button" onClick={buttonOnClick}>
       {buttonLabel}
     </button>
-  </section>
+  </div>
 );

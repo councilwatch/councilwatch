@@ -1,0 +1,13 @@
+@use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+
+.home {
+    @include mixins.flex-center(column, 40px);
+    margin-top: vars.$header-height;
+    padding: 0 20px 20px;
+
+    section {
+        @include mixins.flex-center(column);
+        width: 100%;
+    }
+}

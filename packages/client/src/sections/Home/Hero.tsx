@@ -1,18 +1,18 @@
-import { Hero } from '../../components/Hero';
+import type { FC } from 'react';
+import { Hero } from '../../components/Hero/Hero';
 
-export const HomeHero = () => {
+interface HomeHeroProps {
+  ctaFunc: () => void;
+}
 
-    //
-  const ctaFunc = () => {
-    console.log('Onwards to action!');
-  };
+export const HomeHero: FC<HomeHeroProps> = ({ ctaFunc }) => {
 
   const heroProps = {
     title: 'Welcome to CouncilWatch',
     subtitle:
       'We believe city councils behave better under surveillance. Stay informed about local agenda items related to surveillance.',
     backgroundImage: '',
-    ctaLabel: 'CTA Redirect',
+    ctaLabel: 'Learn More',
     ctaOnClick: ctaFunc,
   };
 

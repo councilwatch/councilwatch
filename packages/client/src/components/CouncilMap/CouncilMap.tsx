@@ -1,3 +1,5 @@
+import './CouncilMap.scss';
+
 import type { FC } from 'react';
 
 interface CouncilMapProps {
@@ -15,11 +17,8 @@ export const CouncilMap: FC<CouncilMapProps> = ({ zipCode, setCouncilId }) => {
   // if a zip is provided but no councilId is set.
 
   return (
-    <div>
-      <p>{zipCode}</p>
-      <button type="button" value={123456} onClick={(e) => setCouncilId(Number(e.currentTarget.value))}>
-        Example Council Id: 123456
-      </button>
+    <div className="council-map">
+      <button className="council-map__button" type="button" value={123456} onClick={(e) => setCouncilId(Number(e.currentTarget.value))} />
     </div>
   );
 };

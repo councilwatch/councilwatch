@@ -1,3 +1,5 @@
+import './Hero.scss';
+
 import type { FC } from 'react';
 
 interface HeroProps {
@@ -9,13 +11,13 @@ interface HeroProps {
 }
 
 export const Hero: FC<HeroProps> = ({ title, subtitle, backgroundImage, ctaLabel, ctaOnClick }) => (
-  <section style={{ backgroundImage: `url(${backgroundImage})` }}>
-    <h1>{title}</h1>
-    {subtitle && <p>{subtitle}</p>}
+  <div className="hero" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <h1 className="hero__title">{title}</h1>
+    {subtitle && <p className="hero__subtitle">{subtitle}</p>}
     {ctaLabel && ctaOnClick && (
-      <button type="button" onClick={ctaOnClick}>
+      <button className="hero__cta" type="button" onClick={ctaOnClick}>
         {ctaLabel}
       </button>
     )}
-  </section>
+  </div>
 );
