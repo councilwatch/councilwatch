@@ -110,13 +110,12 @@ Then, run docker compose
 docker compose --profile prod up -d
 ```
 
+And the server should be accessible on port 8080
+
 To stop the server:
 ```bash
 docker compose --profile prod down
 ```
-
-And the server should be accessible on port 8080
-
 
 ## Troubleshooting
 
