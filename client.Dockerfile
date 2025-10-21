@@ -3,7 +3,7 @@ FROM node:22-alpine AS build
 WORKDIR /councilwatch
 
 COPY --parents package.json package-lock.json packages/client/package.json . 
-RUN npm install --workspace=packages/client
+RUN npm install --workspace=packages/client --include-workspace-root
 
 # Have this later to optimize image caching
 COPY . .
