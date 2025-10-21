@@ -38,15 +38,23 @@ cp docs/.env.development.example packages/server/.env.development
 
 ### Running
 
+> [!IMPORTANT]  
+> If changes have been made to the docker configuration (or if you are not sure). You should run command to start the database
+> with the extra argument `--build` to re-build the docker images
+
+
 ```bash
 # Start the database.
-docker compose run --rm -p 5432:5432 database
+docker compose --profile dev up -d
 
 # Start the server
 npm run start:server
 
 # Start the client
 npm run start:client
+
+# When you're done, stop the database. Remember, changes to the development database WILL be lost
+docker compose --profile dev down
 ```
 
 ### Testing
@@ -93,9 +101,13 @@ Now, you'll need to set up the production environment file. Copy the file to the
 cp docs/.env.production.example ./.env
 ```
 
+> [!IMPORTANT]  
+> If changes have been made to the docker configuration (or if you are not sure). You should run the below command
+> with the extra argument `--build` to re-build the docker images
+
 Then, run docker compose
 ```bash
-docker compose up -d
+docker compose --profile prod up -d
 ```
 
 And the server should be accessible on port 8080
