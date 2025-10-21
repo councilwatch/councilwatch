@@ -1,35 +1,52 @@
 name: councilwatch
 
+
 services:
   client:
     build:
       context: .
       dockerfile: client.Dockerfile
     ports:
-      - 8080:8080
+      - "${COUNCILWATCH_PORT}:8080"
     networks:
       - frontend
+    profiles: [prod,production]
 
   server:
     build:
       context: .
       dockerfile: server.Dockerfile
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@database:5432/councilwatch
+      - DATABASE_URL=postgres://councilwatch:${POSTGRES_PASSWORD}@database:5432/councilwatch
     networks:
       - backend
       - frontend
+    depends_on:
+      - database
+    profiles: [prod,production]
 
   database:
     image: "postgres:18"
     environment:
       - POSTGRES_DB=councilwatch
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=councilwatch
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - councilwatch_data:/var/lib/postgresql/data
     networks:
       - backend
+    profiles: [prod,production]
+
+  # A temporary database for development purposes
+  db_development:
+    image: "postgres:18"
+    environment:
+      - POSTGRES_DB=councilwatch
+      - POSTGRES_USER=councilwatch
+      - POSTGRES_PASSWORD=councilwatch
+    ports:
+      - 5432:5432
+    profiles: [dev,devel,develop,development]
 
 volumes:
   councilwatch_data:

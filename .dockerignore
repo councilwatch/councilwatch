@@ -7,3 +7,6 @@
 /docs
 /README.md
 /LICENSE
+
+# Don't include environment files. Interconnection is handled by docker-compose.yaml and a main .env file
+.env*

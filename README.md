@@ -38,15 +38,23 @@ cp docs/.env.development.example packages/server/.env.development
 
 ### Running
 
+> [!IMPORTANT]  
+> If changes have been made to the docker configuration (or if you are not sure). You should run the command to start the database
+> with the extra argument `--build` to re-build the docker images
+
+
 ```bash
 # Start the database.
-docker compose run --rm -p 5432:5432 database
+docker compose --profile dev up -d
 
 # Start the server
 npm run start:server
 
 # Start the client
 npm run start:client
+
+# When you're done, stop the database. Remember, changes to the development database WILL be lost
+docker compose --profile dev down
 ```
 
 ### Testing
@@ -87,9 +95,55 @@ git clone https://github.com/councilwatch/councilwatch.git
 cd councilwatch
 ```
 
+Now, you'll need to set up the production environment file. Copy the file to the base (current) directory and modify any values as needed
+
+```bash
+cp docs/.env.production.example ./.env
+```
+
+> [!IMPORTANT]  
+> If changes have been made to the docker configuration (or if you are not sure). You should run the below command
+> with the extra argument `--build` to re-build the docker images
+
 Then, run docker compose
 ```bash
-docker compose up -d
+docker compose --profile prod up -d
 ```
 
 And the server should be accessible on port 8080
+
+To stop the server:
+```bash
+docker compose --profile prod down
+```
+
+## Troubleshooting
+
+### The server won't start in production mode. It says it can't connect to the database
+
+The database configuration may have changed. To fix this, just delete the database volume. (It will automatically be re-created)
+
+1. List all of your local volumes with `docker volume ls -q`. Find the councilwatch volume in this output. It should be something like `councilwatch_councilwatch_data`
+2. Delete the volume with `docker volume rm <the volume name>`
+
+If docker says the volume is in use, stop the running profile and try again.
+
+### Docker says "no service selected"
+
+You didn't specify a profile. For development, add `--profile dev` before "up" and for production, add `--profile prod`
+
+### I get warnings about variables not being set
+
+If you are in development mode, you can safely ignore these warnings.
+
+You didn't copy the env file from `docs/.env.production.example` to `./.env`. Copy that and try again.
+You might also have to delete the database volume
+
+### When I start the server/client, I get nest/vite: command not found
+
+You forgot to run `npm install` after cloning the repository. Run that command and restart the server/client
+
+### When I run the server in development mode, it gives an error that "DATABASE_URL" is required
+
+You didn't copy the env file from `docs/.env.development.example` to `packages/server/.env.development`.
+Copy that and try again
