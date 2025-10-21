@@ -118,9 +118,9 @@ docker compose --profile prod down
 And the server should be accessible on port 8080
 
 
-### Troubleshooting
+## Troubleshooting
 
-#### The server won't start in production mode. It says it can't connect to the database
+### The server won't start in production mode. It says it can't connect to the database
 
 The database configuration may have changed. To fix this, just delete the database volume. (It will automatically be re-created)
 
@@ -129,7 +129,7 @@ The database configuration may have changed. To fix this, just delete the databa
 
 If docker says the volume is in use, stop the running profile and try again.
 
-#### Docker says "no service selected"
+### Docker says "no service selected"
 
 You didn't specify a profile. For development, add `--profile dev` before "up" and for production, add `--profile prod`
 
