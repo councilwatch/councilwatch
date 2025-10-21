@@ -1,5 +1,6 @@
 name: councilwatch
 
+
 services:
   client:
     build:
@@ -15,7 +16,7 @@ services:
       context: .
       dockerfile: server.Dockerfile
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@database:5432/councilwatch
+      - DATABASE_URL=postgres://councilwatch:${POSTGRES_PASSWORD}@database:5432/councilwatch
     networks:
       - backend
       - frontend
@@ -24,8 +25,8 @@ services:
     image: "postgres:18"
     environment:
       - POSTGRES_DB=councilwatch
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=councilwatch
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - councilwatch_data:/var/lib/postgresql/data
     networks:
