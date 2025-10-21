@@ -141,4 +141,9 @@ You might also have to delete the database volume
 
 ### When I start the server/client, I get nest/vite: command not found
 
-You forgot to run `npm install` after cloning the repository.
+You forgot to run `npm install` after cloning the repository. Run that command and restart the server/client
+
+### When I run the server in development mode, it gives an error that "DATABASE_URL" is required
+
+You didn't copy the env file from `docs/.env.development.example` to `packages/server/.env.development`.
+Copy that and try again
