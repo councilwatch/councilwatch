@@ -39,7 +39,7 @@ cp docs/.env.development.example packages/server/.env.development
 ### Running
 
 > [!IMPORTANT]  
-> If changes have been made to the docker configuration (or if you are not sure). You should run command to start the database
+> If changes have been made to the docker configuration (or if you are not sure). You should run the command to start the database
 > with the extra argument `--build` to re-build the docker images
 
 
