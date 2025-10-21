@@ -132,7 +132,9 @@ If docker says the volume is in use, stop the running profile and try again.
 
 You didn't specify a profile. For development, add `--profile dev` before "up" and for production, add `--profile prod`
 
-### I get warnings about variables not being set when running in production mode
+### I get warnings about variables not being set
+
+If you are in development mode, you can safely ignore these warnings.
 
 You didn't copy the env file from `docs/.env.production.example` to `./.env`. Copy that and try again.
 You might also have to delete the database volume
