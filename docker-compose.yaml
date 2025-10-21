@@ -10,6 +10,7 @@ services:
       - "${COUNCILWATCH_PORT}:8080"
     networks:
       - frontend
+    profiles: [prod,production]
 
   server:
     build:
@@ -22,6 +23,7 @@ services:
       - frontend
     depends_on:
       - database
+    profiles: [prod,production]
 
   database:
     image: "postgres:18"
@@ -33,6 +35,18 @@ services:
       - councilwatch_data:/var/lib/postgresql/data
     networks:
       - backend
+    profiles: [prod,production]
+
+  # A temporary database for development purposes
+  db_development:
+    image: "postgres:18"
+    environment:
+      - POSTGRES_DB=councilwatch
+      - POSTGRES_USER=councilwatch
+      - POSTGRES_PASSWORD=councilwatch
+    ports:
+      - 5432:5432
+    profiles: [dev,devel,develop,development]
 
 volumes:
   councilwatch_data:
