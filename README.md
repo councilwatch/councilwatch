@@ -87,6 +87,12 @@ git clone https://github.com/councilwatch/councilwatch.git
 cd councilwatch
 ```
 
+Now, you'll need to set up the production environment file. Copy the file to the base (current) directory and modify any values as needed
+
+```bash
+cp docs/.env.production.example ./.env
+```
+
 Then, run docker compose
 ```bash
 docker compose up -d
