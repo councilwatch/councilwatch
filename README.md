@@ -110,4 +110,31 @@ Then, run docker compose
 docker compose --profile prod up -d
 ```
 
+To stop the server:
+```bash
+docker compose --profile prod down
+```
+
 And the server should be accessible on port 8080
+
+
+### Troubleshooting
+
+#### The server won't start in production mode. It says it can't connect to the database
+
+The database configuration may have changed. To fix this, just delete the database volume. (It will automatically be re-created)
+
+1. List all of your local volumes with `docker volume ls -q`. Find the councilwatch volume in this output. It should be something like `councilwatch_councilwatch_data`
+2. Delete the volume with `docker volume rm <the volume name>`
+
+If docker says the volume is in use, stop the running profile and try again.
+
+#### Docker says "no service selected"
+
+You didn't specify a profile. For development, add `--profile dev` before "up" and for production, add `--profile prod`
+
+### I get warnings about variables not being set when running in production mode
+
+You didn't copy the env file from `docs/.env.production.example` to `./.env`. Copy that and try again.
+You might also have to delete the database volume
+
