@@ -20,6 +20,8 @@ services:
     networks:
       - backend
       - frontend
+    depends_on:
+      - database
 
   database:
     image: "postgres:18"
