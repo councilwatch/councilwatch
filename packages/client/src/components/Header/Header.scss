@@ -1,0 +1,43 @@
+@use '../../styles/variables' as vars;
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #ebeef1, #000000);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: vars.$header-height;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+    &__logo {
+        width: 50px;
+        height: auto;
+        position: absolute;
+        left: 10px;
+    }
+
+    &__links {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+
+        li {
+            a {
+                text-decoration: none;
+                color: rgb(255, 255, 255);
+                font-size: 1.3rem;
+                font-weight: 600;
+                transition: 0.1s ease-in;
+
+                &:hover {
+                    color: red;
+                }
+            }
+        }
+    }
+}

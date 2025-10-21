@@ -10,7 +10,7 @@ export const MeetingsInspect: React.FC = () => {
       {/* Placeholder for map view */}
       <div>Map View Placeholder</div>
       {/* Filters, export .ics */}
-      <button>Export to Calendar</button>
+      <button type="button">Export to Calendar</button>
       {/* List of meetings with RSVPs */}
     </div>
   );
