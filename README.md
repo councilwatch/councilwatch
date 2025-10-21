@@ -139,3 +139,6 @@ If you are in development mode, you can safely ignore these warnings.
 You didn't copy the env file from `docs/.env.production.example` to `./.env`. Copy that and try again.
 You might also have to delete the database volume
 
+### When I start the server/client, I get nest/vite: command not found
+
+You forgot to run `npm install` after cloning the repository.
