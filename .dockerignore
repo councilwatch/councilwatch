@@ -3,9 +3,15 @@
 **/build/
 **/out/
 
+# Don't copy docker things into the container
+**/*.Dockerfile
+**/Dockerfile
+**/docker-compose.yaml
+**/docker-compose.yml
+
 # Docs shouldn't be needed to build the docker image
 /docs
-/README.md
+/*.md
 /LICENSE
 
 # Don't include environment files. Interconnection is handled by docker-compose.yaml and a main .env file
