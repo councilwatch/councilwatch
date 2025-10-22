@@ -2,8 +2,8 @@
 FROM node:22-alpine AS build
 WORKDIR /councilwatch
 
-COPY --parents package.json package-lock.json packages/*/package.json . 
-RUN npm install
+COPY --parents package.json package-lock.json packages/client/package.json . 
+RUN npm install --workspace=packages/client --include-workspace-root
 
 # Have this later to optimize image caching
 COPY . .
@@ -16,6 +16,7 @@ RUN npm run build:client
 FROM nginxinc/nginx-unprivileged
 COPY --from=build /councilwatch/packages/client/dist /usr/share/nginx/html
 
+COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 # nginx unprivileged uses port 8080 by default
 EXPOSE 8080
