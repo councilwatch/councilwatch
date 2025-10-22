@@ -21,11 +21,16 @@ services:
       dockerfile: server.Dockerfile
     environment:
       - DATABASE_URL=postgres://councilwatch:${POSTGRES_PASSWORD}@database:5432/councilwatch
-      - APP_HOST=0.0.0.0
+      - APP_HOST=server_frontend
       - APP_PORT=8080
     networks:
-      - backend
-      - frontend
+      frontend:
+        aliases:
+          - server
+          - server_frontend
+      backend:
+        aliases:
+          - server_backend
     depends_on:
       - database
     profiles: [prod,production]
