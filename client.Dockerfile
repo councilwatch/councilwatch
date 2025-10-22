@@ -16,7 +16,7 @@ RUN npm run build:client
 FROM nginxinc/nginx-unprivileged
 COPY --from=build /councilwatch/packages/client/dist /usr/share/nginx/html
 
-COPY conf/nginx /etc/nginx
+COPY --chown=nginx:nginx conf/nginx /etc/nginx
 
 # nginx unprivileged uses port 8080 by default
 EXPOSE 8080
