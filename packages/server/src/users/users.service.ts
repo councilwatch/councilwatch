@@ -41,7 +41,7 @@ export class UsersService {
   }
 
   async deleteUser(email: string): Promise<User> {
-    const user = await this.getUser(email);
+    const user = await this.getUser(email, true);
     const result = await this.usersRepository.remove(user);
 
     return result;
