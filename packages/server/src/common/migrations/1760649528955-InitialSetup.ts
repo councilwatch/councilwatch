@@ -30,7 +30,6 @@ export class InitialSetup1760649528955 implements MigrationInterface {
           default: `'user'`,
         },
       ],
-      indices: [{ name: 'idx_users_email', columnNames: ['email'], isUnique: true }],
     });
 
     await queryRunner.query(`CREATE TYPE ${this.USER_ROLE_ENUM} AS ENUM('admin', 'moderator', 'user')`);
