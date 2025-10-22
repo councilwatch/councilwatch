@@ -23,6 +23,7 @@ async function bootstrap() {
     .setTitle('CouncilWatch API')
     .setDescription('The bigger brother to Big Brother.')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

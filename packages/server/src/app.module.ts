@@ -4,6 +4,8 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppConfigModule } from './app-config/app-config.module';
 import { AppConfigService } from './app-config/app-config.service';
+import { AuthModule } from './auth/auth.module';
+import { EmailModule } from './email/email.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
@@ -25,6 +27,8 @@ import { UsersModule } from './users/users.module';
     }),
     ScheduleModule.forRoot(),
     UsersModule,
+    AuthModule,
+    EmailModule,
   ],
 })
 export class AppModule {}

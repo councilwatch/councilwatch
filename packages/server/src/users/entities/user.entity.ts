@@ -14,9 +14,6 @@ export class User {
   @Column({ name: 'email' })
   email: string;
 
-  @Column({ name: 'password' })
-  password: string;
-
   @Column({
     name: 'role',
     type: 'enum',
