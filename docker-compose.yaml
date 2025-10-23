@@ -17,7 +17,6 @@ services:
       dockerfile: server.Dockerfile
     environment:
       - DATABASE_URL=postgres://councilwatch:${POSTGRES_PASSWORD}@database:5432/councilwatch
-      - JWT_ALGORITHM=${JWT_ALGORITHM}
       - JWT_AUDIENCE=${JWT_AUDIENCE}
       - JWT_ISSUER=${JWT_ISSUER}
       - JWT_SECRET=${JWT_SECRET}
