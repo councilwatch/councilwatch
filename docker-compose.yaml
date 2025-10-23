@@ -1,6 +1,5 @@
 name: councilwatch
 
-
 services:
   client:
     build:
@@ -10,7 +9,7 @@ services:
       - "${COUNCILWATCH_PORT}:8080"
     networks:
       - frontend
-    profiles: [prod,production]
+    profiles: [prod, production]
 
   server:
     build:
@@ -18,12 +17,17 @@ services:
       dockerfile: server.Dockerfile
     environment:
       - DATABASE_URL=postgres://councilwatch:${POSTGRES_PASSWORD}@database:5432/councilwatch
+      - JWT_ALGORITHM=${JWT_ALGORITHM}
+      - JWT_AUDIENCE=${JWT_AUDIENCE}
+      - JWT_ISSUER=${JWT_ISSUER}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_LIFETIME=${JWT_LIFETIME}
     networks:
       - backend
       - frontend
     depends_on:
       - database
-    profiles: [prod,production]
+    profiles: [prod, production]
 
   database:
     image: "postgres:18"
@@ -35,7 +39,7 @@ services:
       - councilwatch_data:/var/lib/postgresql/data
     networks:
       - backend
-    profiles: [prod,production]
+    profiles: [prod, production]
 
   # A temporary database for development purposes
   db_development:
@@ -46,7 +50,7 @@ services:
       - POSTGRES_PASSWORD=councilwatch
     ports:
       - 5432:5432
-    profiles: [dev,devel,develop,development]
+    profiles: [dev, devel, develop, development]
 
 volumes:
   councilwatch_data:
