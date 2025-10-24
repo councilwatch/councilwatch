@@ -10,7 +10,7 @@ export class UsersService {
     private readonly usersRepository: Repository<User>,
   ) {}
 
-  async createUser(userDto: Omit<User, 'id'>): Promise<User> {
+  async createUser(userDto: User): Promise<User> {
     const user = this.usersRepository.create(userDto);
 
     return this.usersRepository.save(user);

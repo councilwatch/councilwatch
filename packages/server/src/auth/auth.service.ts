@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Result } from '../common/dto/result.dto';
@@ -5,11 +6,6 @@ import { EmailService } from '../email/email.service';
 import { User, UserRole } from '../users/entities/user.entity';
 import { UsersService } from '../users/users.service';
 import { RegisterDto } from './dto/register.dto';
-
-export type JwtPayload = {
-  email: string;
-  role: UserRole;
-};
 
 @Injectable()
 export class AuthService {
@@ -32,7 +28,11 @@ export class AuthService {
       throw new ConflictException('A user with this email already exists. Please log in instead.');
     }
 
-    const token = await this.generateJwtToken(registerDto.email, UserRole.USER);
+    const token = await this.jwtService.signAsync<User>({
+      id: randomUUID(),
+      email: registerDto.email,
+      role: UserRole.USER,
+    });
 
     await this.emailService.sendRegistrationEmail(registerDto.email, token);
 
@@ -46,20 +46,16 @@ export class AuthService {
       throw new UnauthorizedException('Registration has already been completed for this email');
     }
 
-    await this.usersService.createUser({ email: user.email, role: user.role });
+    await this.usersService.createUser(user);
 
     return new Result('Registration completed successfully');
   }
 
   async login(user: User): Promise<Result> {
-    const token = await this.generateJwtToken(user.email, user.role);
+    const token = await this.jwtService.signAsync<User>(user);
 
     await this.emailService.sendLoginEmail(user.email, token);
 
     return new Result('Login email sent successfully');
-  }
-
-  private generateJwtToken(email: string, role: UserRole): Promise<string> {
-    return this.jwtService.signAsync<JwtPayload>({ email, role });
   }
 }

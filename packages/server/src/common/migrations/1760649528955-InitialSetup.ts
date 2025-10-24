@@ -13,15 +13,7 @@ export class InitialSetup1760649528955 implements MigrationInterface {
     const usersTable = new Table({
       name: this.USERS_TABLE,
       columns: [
-        {
-          name: 'id',
-          type: 'uuid',
-          isPrimary: true,
-          isUnique: true,
-          isNullable: false,
-          isGenerated: true,
-          generationStrategy: 'uuid',
-        },
+        { name: 'id', type: 'uuid', isPrimary: true, isUnique: true, isNullable: false },
         { name: 'email', type: 'varchar', isUnique: true, isNullable: false },
         {
           name: 'role',

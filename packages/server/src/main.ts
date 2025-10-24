@@ -21,10 +21,16 @@ async function bootstrap() {
   app.setGlobalPrefix(apiPrefix);
 
   const config = new DocumentBuilder()
+    .setVersion('1.0')
     .setTitle('CouncilWatch API')
     .setDescription('The bigger brother to Big Brother.')
-    .setVersion('1.0')
+    .setLicense('Licensed under the AGPL-3.0 license', 'https://www.gnu.org/licenses/agpl-3.0.en.html')
+    .setContact('CouncilWatch Team', 'https://councilwatch.com/contact', '')
+    .setExternalDoc('Source Code - GitHub', 'https://github.com/councilwatch/councilwatch')
+    .setTermsOfService('https://councilwatch.com/terms')
     .addBearerAuth({ type: 'http' }, JWT)
+    .addServer(`http://${host}:${port}`, 'Localhost')
+    .addServer('https://councilwatch.com', 'Production') // TODO: Update when we have a production URL
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
