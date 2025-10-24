@@ -4,6 +4,7 @@ import { FastifyAdapter, type NestFastifyApplication } from '@nestjs/platform-fa
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { AppConfigService } from './app-config/app-config.service';
+import { JWT } from './auth/auth.constants';
 
 async function bootstrap() {
   const logger = new Logger('CouncilWatch');
@@ -23,7 +24,7 @@ async function bootstrap() {
     .setTitle('CouncilWatch API')
     .setDescription('The bigger brother to Big Brother.')
     .setVersion('1.0')
-    .addBearerAuth()
+    .addBearerAuth({ type: 'http' }, JWT)
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
