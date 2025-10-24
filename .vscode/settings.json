@@ -7,10 +7,12 @@
   "[jsonc]": { "editor.defaultFormatter": "biomejs.biome" },
   "[jsonl]": { "editor.defaultFormatter": "biomejs.biome" },
 
+  "files.eol": "\n",
   "files.associations": {
     ".env.*": "properties"
   },
 
+  "typescript.preferences.importModuleSpecifier": "relative",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",

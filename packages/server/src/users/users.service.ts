@@ -1,55 +1,49 @@
-import { ForbiddenException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { compare, genSalt, hash } from 'bcrypt';
 import type { Repository } from 'typeorm';
-import type { LoginDto } from './dto/login.dto';
-import type { RegisterDto } from './dto/register.dto';
 import { User } from './entities/user.entity';
-
-// TODO: Mostly just a placeholder, we'll tidy this up later. Need to set cookies and all that jazz
 
 @Injectable()
 export class UsersService {
-  private readonly logger = new Logger(UsersService.name);
-
   constructor(
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
   ) {}
 
-  async register(registerDto: RegisterDto): Promise<boolean> {
-    try {
-      const user = this.usersRepository.create(registerDto);
+  async createUser(userDto: User): Promise<User> {
+    const user = this.usersRepository.create(userDto);
 
-      const salt = await genSalt(10);
-      user.password = await hash(user.password, salt);
-
-      await this.usersRepository.save(user);
-
-      return true;
-    } catch (error) {
-      this.logger.error('Error registering user', error);
-
-      throw new InternalServerErrorException('Error registering user');
-    }
+    return this.usersRepository.save(user);
   }
 
-  async login(loginDto: LoginDto): Promise<boolean> {
-    const user: Pick<User, 'password'> | null = await this.usersRepository.findOne({
-      where: { email: loginDto.email },
-      select: { password: true },
-    });
+  async getUser(email: string, throwIfNotFound?: true): Promise<User>;
+  async getUser(email: string, throwIfNotFound?: false): Promise<User | null>;
+  async getUser(email: string, throwIfNotFound: boolean = false): Promise<User | null> {
+    const user = await this.usersRepository.findOne({ where: { email } });
 
-    if (!user) {
-      throw new ForbiddenException('Invalid credentials');
+    if (!user && throwIfNotFound) {
+      throw new NotFoundException(`User with email ${email} not found`);
     }
 
-    const passwordMatches = await compare(loginDto.password, user.password);
+    return user;
+  }
 
-    if (!passwordMatches) {
-      throw new ForbiddenException('Invalid credentials');
+  async updateUser(email: string, updateDto: Partial<User>): Promise<User> {
+    const user = await this.getUser(email);
+
+    const result = await this.usersRepository.update({ email }, updateDto);
+
+    if (typeof result.affected !== 'number' || result.affected === 0) {
+      throw new InternalServerErrorException('Failed to update user');
     }
 
-    return true;
+    return { ...user, ...updateDto };
+  }
+
+  async deleteUser(email: string): Promise<User> {
+    const user = await this.getUser(email, true);
+    const result = await this.usersRepository.remove(user);
+
+    return result;
   }
 }
