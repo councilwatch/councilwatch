@@ -7,6 +7,7 @@ import { AppConfigModule } from './app-config/app-config.module';
 import { AppConfigService } from './app-config/app-config.service';
 import { AuthModule } from './auth/auth.module';
 import { EmailModule } from './email/email.module';
+import { EventsModule } from './events/events.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
@@ -33,6 +34,7 @@ import { UsersModule } from './users/users.module';
     UsersModule,
     AuthModule,
     EmailModule,
+    EventsModule,
   ],
 })
 export class AppModule {}
