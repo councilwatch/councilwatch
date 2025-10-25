@@ -1,0 +1,49 @@
+@use '../../styles/mixins' as mixins;
+
+.cta {
+    @include mixins.flex-center(column);
+    width: 60vw;
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(to right, #000000, rgb(99, 5, 5));
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    &__title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    &__subtitle {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+
+    &__blurb {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        max-width: 800px;
+    }
+
+    &__button {
+        padding: 12px 32px;
+        font-weight: 600;
+        border: none;
+        border-radius: 4px;
+        background-color: #fff;
+        color: red;
+        cursor: pointer;
+        transition: 0.2s ease;
+
+        &:hover {
+            scale: 105%;
+        }
+
+        &:active {
+            scale: 95%;
+        }
+    }
+}

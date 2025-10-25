@@ -1,0 +1,24 @@
+@use '../../styles/mixins' as mixins;
+
+.home {
+    @include mixins.flex-center(column, 40px);
+
+    section {
+        @include mixins.flex-center(column);
+        width: 100%;
+    }
+}
+
+@media (max-width: 717px) {
+    /* prevent the map and find events not fitting on smaller screens */
+
+    .event-finder {
+         &__module {
+             flex-direction: column;
+         }
+
+         &__feed {
+            width: inherit !important;
+        }
+    }
+}

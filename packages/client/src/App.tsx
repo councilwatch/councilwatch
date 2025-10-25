@@ -1,16 +1,16 @@
 // src/App.tsx
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import { Home } from './pages/Home';
-import { UserRegistration } from './pages/UserRegistration';
-import { ReviewerDashboard } from './pages/ReviewerDashboard';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Footer } from './components/Footer/Footer';
+import { Header } from './components/Header/Header';
 import { AgendaReview } from './pages/AgendaReview';
+import { Home } from './pages/Home/Home';
 import { MeetingCreation } from './pages/MeetingCreation';
-import { MeetingsInspect } from './pages/MeetingsInspect';
 import { MeetingRSVP } from './pages/MeetingRSVP';
+import { MeetingsInspect } from './pages/MeetingsInspect';
+import { ReviewerDashboard } from './pages/ReviewerDashboard';
 import { ReviewerInvitation } from './pages/ReviewerInvitation';
 import { ReviewerRegistration } from './pages/ReviewerRegistration';
+import { UserRegistration } from './pages/UserRegistration';
 
 export const App = () => {
   return (

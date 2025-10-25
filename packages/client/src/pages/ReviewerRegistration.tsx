@@ -7,8 +7,12 @@ export const ReviewerRegistration: React.FC = () => {
       <h2>Reviewer Registration</h2>
       {/* Placeholder for form: password (hashed), magic link token, email */}
       <form>
-        <label>Password: <input type="password" /></label>
-        <label>Email: <input type="email" /></label>
+        <label>
+          Password: <input type="password" />
+        </label>
+        <label>
+          Email: <input type="email" />
+        </label>
         {/* Magic link handling */}
         <button type="submit">Register</button>
       </form>

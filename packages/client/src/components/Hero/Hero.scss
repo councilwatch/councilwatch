@@ -1,0 +1,39 @@
+@use '../../styles/mixins' as mixins;
+
+.hero {
+    @include mixins.flex-center(column);
+    text-align: center;
+    padding: 80px 20px;
+    min-height: 80vh;
+
+    &__title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    &__subtitle {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+    }
+
+    &__cta {
+        padding: 12px 32px;
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: red;
+        font-weight: 600;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.2s ease;
+
+        &:hover {
+            border-color: red;
+        }
+
+        &:active {
+            scale: (95%);
+        }
+    }
+}

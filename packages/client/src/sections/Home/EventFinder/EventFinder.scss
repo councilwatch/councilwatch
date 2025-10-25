@@ -1,0 +1,27 @@
+@use '../../../styles/mixins' as mixins;
+
+.event-finder {
+    @include mixins.flex-center(column, 30px);
+
+    &__module {
+        display: flex;
+        max-height: 300px;
+    }
+
+    &__feed {
+        border: 1px solid gray;
+        border-radius: 10px;
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        scrollbar-width: none;
+        width: 250px;
+        margin: 10px 20px;
+    }
+
+    &__placeholder {
+        height: 100%;
+        @include mixins.flex-center(column);
+        color: rgb(145, 145, 145);
+    }
+}

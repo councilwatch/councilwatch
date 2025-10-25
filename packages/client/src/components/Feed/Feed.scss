@@ -1,0 +1,35 @@
+.feed {
+    &__event {
+        padding: 5px 10px;
+    }
+
+    &__event:not(:last-child) {
+        border-bottom: 1px solid var(--color);
+    }
+
+    &__event-header {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 1.2em;
+    }
+
+    &__event-city {
+        font-weight: bold;
+        margin: 0;
+    }
+
+    &__event-type {
+        margin: 0;
+    }
+
+    &__event-date {
+        margin: 0;
+        color: rgb(145, 145, 145)
+    }
+
+    &__event-link {
+        text-decoration: none;
+        color: red;
+    }
+}

@@ -1,0 +1,8 @@
+@use '../../styles/mixins' as mixins;
+
+.footer {
+    @include mixins.flex-center;
+    width: 100%;
+    background: linear-gradient(to left, #ebeef1, #000000);
+    color: #fff;
+}

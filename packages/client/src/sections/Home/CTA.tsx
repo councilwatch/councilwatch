@@ -1,4 +1,4 @@
-import { CTA } from '../../components/CTA';
+import { CTA } from '../../components/CTA/CTA';
 
 export const HomeCTA = () => {
   const buttonFunc = () => {
