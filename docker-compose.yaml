@@ -9,6 +9,9 @@ services:
       - "${COUNCILWATCH_PORT}:8080"
     networks:
       - frontend
+    # The server MUST be started first or nginx will crash
+    depends_on:
+      - server
     profiles: [prod, production]
 
   server:
@@ -17,13 +20,20 @@ services:
       dockerfile: server.Dockerfile
     environment:
       - DATABASE_URL=postgres://councilwatch:${POSTGRES_PASSWORD}@database:5432/councilwatch
+      - APP_HOST=server_frontend
+      - APP_PORT=8080
       - JWT_AUDIENCE=${JWT_AUDIENCE}
       - JWT_ISSUER=${JWT_ISSUER}
       - JWT_SECRET=${JWT_SECRET}
       - JWT_LIFETIME=${JWT_LIFETIME}
     networks:
-      - backend
-      - frontend
+      frontend:
+        aliases:
+          - server
+          - server_frontend
+      backend:
+        aliases:
+          - server_backend
     depends_on:
       - database
     profiles: [prod, production]
