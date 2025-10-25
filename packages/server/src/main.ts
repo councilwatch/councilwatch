@@ -1,4 +1,4 @@
-import { Logger } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, type NestFastifyApplication } from '@nestjs/platform-fastify';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -19,6 +19,13 @@ async function bootstrap() {
   const docsPath = `${apiPrefix}/docs`;
 
   app.setGlobalPrefix(apiPrefix);
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      stopAtFirstError: false,
+    }),
+  );
 
   const config = new DocumentBuilder()
     .setVersion('1.0')
