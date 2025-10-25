@@ -7,7 +7,9 @@ export const AgendaReview: React.FC = () => {
       <h2>Review Agendas</h2>
       {/* Placeholder for list of agendas */}
       <ul>
-        <li>Agenda Item 1 - <button>Approve</button> <button>Reject</button></li>
+        <li>
+          Agenda Item 1 - <button type="button">Approve</button> <button type="button">Reject</button>
+        </li>
         {/* ... */}
       </ul>
     </div>

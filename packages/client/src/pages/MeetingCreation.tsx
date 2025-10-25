@@ -7,10 +7,18 @@ export const MeetingCreation: React.FC = () => {
       <h2>Create Meeting</h2>
       {/* Placeholder for form: council, address, dateTime, notes, tags, etc. */}
       <form>
-        <label>Council: <select>{/* Options */}</select></label>
-        <label>Address: <input type="text" /></label>
-        <label>Date & Time: <input type="datetime-local" /></label>
-        <label>Notes: <textarea /></label>
+        <label>
+          Council: <select>{/* Options */}</select>
+        </label>
+        <label>
+          Address: <input type="text" />
+        </label>
+        <label>
+          Date & Time: <input type="datetime-local" />
+        </label>
+        <label>
+          Notes: <textarea />
+        </label>
         {/* Tags, virtual link, etc. */}
         <button type="submit">Create</button>
       </form>
