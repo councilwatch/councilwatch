@@ -1,6 +1,7 @@
 import { join } from 'node:path';
 import { Module } from '@nestjs/common';
 import { ScheduleModule } from '@nestjs/schedule';
+import { ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppConfigModule } from './app-config/app-config.module';
 import { AppConfigService } from './app-config/app-config.service';
@@ -24,6 +25,9 @@ import { UsersModule } from './users/users.module';
         migrations: [join(__dirname, 'common', 'migrations', '*.{ts,js}')],
         migrationsRun: true,
       }),
+    }),
+    ThrottlerModule.forRoot({
+      throttlers: [{ ttl: 60_000, limit: 60 }], // 60 requests per minute. TODO: See if these values are appropriate
     }),
     ScheduleModule.forRoot(),
     UsersModule,
