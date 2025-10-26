@@ -1,4 +1,3 @@
-import { randomUUID } from 'node:crypto';
 import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Result } from '../common/dto/result.dto';
@@ -6,6 +5,7 @@ import { EmailService } from '../email/email.service';
 import { User, UserRole } from '../users/entities/user.entity';
 import { UsersService } from '../users/users.service';
 import { RegisterDto } from './dto/register.dto';
+import { v7 as uuidv7 } from 'uuid';
 
 @Injectable()
 export class AuthService {
@@ -29,7 +29,7 @@ export class AuthService {
     }
 
     const token = await this.jwtService.signAsync<User>({
-      id: randomUUID(),
+      id: uuidv7(),
       email: registerDto.email,
       role: UserRole.USER,
     });
