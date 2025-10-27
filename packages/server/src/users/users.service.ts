@@ -1,6 +1,8 @@
 import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import type { Repository } from 'typeorm';
+import { Result } from '../common/dto/result.dto';
+import { UpdateCriteriaDto } from './dto/update-criteria.dto';
 import { User } from './entities/user.entity';
 
 @Injectable()
@@ -45,5 +47,10 @@ export class UsersService {
     const result = await this.usersRepository.remove(user);
 
     return result;
+  }
+
+  async updateUserNotificationCriteria(criteria: UpdateCriteriaDto) {
+    console.log(criteria);
+    return new Result('Criteria Upated Successfully');
   }
 }
