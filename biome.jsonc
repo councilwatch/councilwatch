@@ -23,6 +23,12 @@
       "recommended": true,
       "style": {
         "useImportType": "off" // https://biomejs.dev/linter/rules/use-import-type/#caveat-with-typescript-experimental-decorators
+      },
+      "correctness": {
+        "noUnusedImports": {
+          "level": "warn",
+          "fix": "safe"
+        }
       }
     }
   },
