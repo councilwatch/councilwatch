@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, ForbiddenException, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { ROLES_KEY } from '../../common/decorators/user-role.decorator';
-import { UserRole } from '../../users/entities/user.entity';
+import { User, UserRole } from '../../users/entities/user.entity';
 
 @Injectable()
 export class RolesGuard implements CanActivate {
@@ -18,14 +18,14 @@ export class RolesGuard implements CanActivate {
     }
 
     const request = context.switchToHttp().getRequest();
-    const user = request.user;
+    const user: User = request.user;
 
     // Admin can access everything
     if (user.role === UserRole.ADMIN) {
       return true;
     }
 
-    const hasRole = requiredRoles.some((role) => user.type === role);
+    const hasRole = requiredRoles.some((role) => user.role === role);
     if (!hasRole) {
       throw new ForbiddenException('Insufficient permissions');
     }

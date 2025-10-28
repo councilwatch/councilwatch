@@ -21,6 +21,12 @@ export class InitialSetup1760649528955 implements MigrationInterface {
           isNullable: false,
           default: `'user'`,
         },
+        {
+          name: 'councils',
+          type: 'text',
+          isNullable: false,
+          default: "''",
+        },
       ],
     });
 

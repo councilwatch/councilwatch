@@ -21,4 +21,10 @@ export class User {
     default: UserRole.USER,
   })
   role: UserRole;
+
+  @Column({
+    name: 'councils',
+    type: 'simple-array',
+  })
+  councils: string[];
 }

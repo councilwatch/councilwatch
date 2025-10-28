@@ -1,7 +1,6 @@
 import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import type { Repository } from 'typeorm';
-import { Result } from '../common/dto/result.dto';
 import { UpdateCriteriaDto } from './dto/update-criteria.dto';
 import { User } from './entities/user.entity';
 
@@ -49,8 +48,22 @@ export class UsersService {
     return result;
   }
 
-  async updateUserNotificationCriteria(criteria: UpdateCriteriaDto) {
-    console.log(criteria);
-    return new Result('Criteria Upated Successfully');
+  async updateUserNotificationCriteria(user: User, criteria: UpdateCriteriaDto): Promise<User> {
+    await this.getUser(user.email, true);
+    const result = await this.usersRepository.update(user.id, { councils: criteria.councilsIds });
+
+    if (!result.affected) {
+      throw new InternalServerErrorException(`Failed to update notification criteria for user ${user.id}`);
+    }
+
+    const updatedUser = await this.usersRepository.findOne({
+      where: { id: user.id },
+    });
+
+    if (!updatedUser) {
+      throw new NotFoundException(`User with id ${user.id} not found`);
+    }
+
+    return updatedUser;
   }
 }

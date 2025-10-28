@@ -5,43 +5,43 @@ import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 import { RolesGuard } from '../auth/guards/role.guard';
 import { CurrentUser } from '../common/decorators/current-user.decorator';
 import { Roles } from '../common/decorators/user-role.decorator';
-import { Result } from '../common/dto/result.dto';
 import { UpdateCriteriaDto } from './dto/update-criteria.dto';
 import { User, UserRole } from './entities/user.entity';
 import { UsersService } from './users.service';
 
 @Controller('users')
 @ApiTags('Users')
-@UseGuards(RolesGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get('/criteria')
-  @UseGuards(JwtAuthGuard)
   @ApiSecurity(JWT_SECURITY)
   @ApiOperation({
     summary: 'Get notification criteria for a user',
     description:
       'Get the critera (councils/meeting updates) that determines when a user will receive a notification',
   })
-  getUserNotificationCriteria(@CurrentUser() user: User): Promise<User> {
-    return this.usersService.getUser(user.email);
+  async getUserNotificationCriteria(@CurrentUser() user: User): Promise<string[]> {
+    const usr = await this.usersService.getUser(user.email, true);
+    return usr.councils;
   }
 
   @Put('/criteria')
-  @UseGuards(JwtAuthGuard)
   @ApiSecurity(JWT_SECURITY)
   @ApiOperation({
     summary: 'Update notification criteria for a user',
     description:
       'Set the critera (councils/meeting updates) that determines when a user will receive a notification',
   })
-  updateUserNotificationCriteria(@Body() criteria: UpdateCriteriaDto): Promise<Result> {
-    return this.usersService.updateUserNotificationCriteria(criteria);
+  updateUserNotificationCriteria(
+    @CurrentUser() user: User,
+    @Body() criteria: UpdateCriteriaDto,
+  ): Promise<User> {
+    return this.usersService.updateUserNotificationCriteria(user, criteria);
   }
 
   @Delete('/me')
-  @UseGuards(JwtAuthGuard)
   @ApiSecurity(JWT_SECURITY)
   @Roles(UserRole.USER)
   @ApiOperation({
@@ -53,7 +53,6 @@ export class UsersController {
   }
 
   @Delete()
-  @UseGuards(JwtAuthGuard)
   @Roles(UserRole.MODERATOR)
   @ApiSecurity(JWT_SECURITY)
   @ApiOperation({
@@ -65,14 +64,13 @@ export class UsersController {
   }
 
   @Put('/promote')
-  @UseGuards(JwtAuthGuard)
   @ApiSecurity(JWT_SECURITY)
   @Roles(UserRole.MODERATOR)
   @ApiOperation({
     summary: 'Promote a user to moderator',
     description: "Update a user's role to Moderator",
   })
-  promoteUserToModerator(@CurrentUser() user: User): Promise<User> {
-    return this.usersService.getUser(user.email);
+  promoteUserToModerator(@Query('email') userEmail: string): Promise<User> {
+    return this.usersService.updateUser(userEmail, { role: UserRole.MODERATOR });
   }
 }

@@ -30,7 +30,7 @@ export class AuthController {
   @ApiSecurity(JWT_SECURITY)
   @ApiOperation({
     summary: 'Complete user registration',
-    description: 'Completes the registration process for a new and persists the user in the database.',
+    description: 'Completes the registration process for a new user and persists the user in the database.',
   })
   completeRegistration(@CurrentUser() user: User): Promise<Result> {
     return this.authService.completeRegistration(user);
