@@ -36,6 +36,22 @@ Next, you'll need to provide an environment file for the server to you. An examp
 cp docs/.env.development.example packages/server/.env.development
 ```
 
+### Seeding the database with example data
+
+To seed the database with some example data, run the following command:
+
+#### *nix (Linux/MacOS/BSD)
+
+```bash
+docker exec -i councilwatch-db_development-1 psql -U councilwatch < ./scripts/seed.sql
+```
+
+#### Windows PowerShell
+
+```powershell
+Get-Content .\scripts\seed.sql | docker exec -i councilwatch-db_development-1 psql -U councilwatch
+```
+
 ### Running
 
 > [!IMPORTANT]  
