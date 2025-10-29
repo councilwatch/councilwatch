@@ -8,24 +8,16 @@ export class Event {
   id: string;
 
   @Column({ name: 'title' })
-  @ApiProperty({ description: 'Title of the event.' })
+  @ApiProperty({ description: 'Title of the event. Must be between 5 and 200 characters.' })
   title: string;
 
   @Column({ name: 'description' })
-  @ApiProperty({ description: 'Short description of the event.' })
+  @ApiProperty({ description: 'Short description of the event. Must be between 5 and 1,000 characters' })
   description: string;
 
   @Column({ name: 'date' })
   @ApiProperty({ description: 'The date and time the event will take place.' })
   date: Date;
-
-  @Column({ name: 'location' })
-  @ApiProperty({ description: 'Where the event will take place.' })
-  location: string;
-
-  @Column({ name: 'zip_code' })
-  @ApiProperty({ description: 'The zip code of the event location.' })
-  zipCode: number;
 
   @Column({ name: 'council_id' })
   @ApiProperty({ description: 'The ID of the council associated with the event.' })
