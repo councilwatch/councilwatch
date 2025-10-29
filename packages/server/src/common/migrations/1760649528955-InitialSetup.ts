@@ -16,12 +16,7 @@ export class InitialSetup1760649528955 implements MigrationInterface {
       columns: [
         { name: 'id', type: 'uuid', isPrimary: true, isUnique: true, isNullable: false },
         { name: 'email', type: 'varchar', isUnique: true, isNullable: false },
-        {
-          name: 'role',
-          type: this.USER_ROLE_ENUM,
-          isNullable: false,
-          default: `'user'`,
-        },
+        { name: 'role', type: this.USER_ROLE_ENUM, isNullable: false, default: `'user'` },
       ],
     });
 
@@ -40,16 +35,10 @@ export class InitialSetup1760649528955 implements MigrationInterface {
         { name: 'title', type: 'varchar', isNullable: false },
         { name: 'description', type: 'text', isNullable: false },
         { name: 'date', type: 'timestamptz', isNullable: false },
-        { name: 'location', type: 'varchar', isNullable: false },
-        { name: 'zip_code', type: 'integer', isNullable: false },
         { name: 'council_id', type: 'uuid', isNullable: false },
         { name: 'approved', type: 'boolean', isNullable: false, default: 'false' },
       ],
-      indices: [
-        { columnNames: ['zip_code'] },
-        { columnNames: ['council_id'] },
-        { columnNames: ['approved'] },
-      ],
+      indices: [{ columnNames: ['council_id'] }, { columnNames: ['approved'] }],
     });
 
     await queryRunner.query(`CREATE TYPE ${this.USER_ROLE_ENUM} AS ENUM('admin', 'moderator', 'user')`);
