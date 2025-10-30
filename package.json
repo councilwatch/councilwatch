@@ -10,7 +10,7 @@
   },
   "homepage": "https://github.com/councilwatch/councilwatch#readme",
   "scripts": {
-    "start:server": "npm run start:dev --workspace=packages/server",
+    "start:server": "npm run start:dev --workspace=packages/server --debug",
     "start:client": "npm run start:dev --workspace=packages/client",
     "test:server": "npm run test --workspace=packages/server",
     "test:client": "npm run test --workspace=packages/client",

@@ -42,7 +42,6 @@ cp docs/.env.development.example packages/server/.env.development
 > If changes have been made to the docker configuration (or if you are not sure). You should run the command to start the database
 > with the extra argument `--build` to re-build the docker images
 
-
 ```bash
 # Start the database.
 docker compose --profile dev up -d
@@ -56,6 +55,8 @@ npm run start:client
 # When you're done, stop the database. Remember, changes to the development database WILL be lost
 docker compose --profile dev down
 ```
+
+The swagger ui can be found at `/api/docs`
 
 ### Testing
 
@@ -82,14 +83,16 @@ npm run build:client
 ## Running for Production with Docker
 
 ### Requirements
+
 | Application                        | Link                                    |
 | ---------------------------------- | --------------------------------------- |
 | Docker                             | https://www.docker.com                  |
 | Docker-Compose addon (if on linux) | https://docs.docker.com/compose/install |
 
-### Running 
+### Running
 
 First, clone the repository
+
 ```bash
 git clone https://github.com/councilwatch/councilwatch.git
 cd councilwatch
@@ -106,6 +109,7 @@ cp docs/.env.production.example ./.env
 > with the extra argument `--build` to re-build the docker images
 
 Then, run docker compose
+
 ```bash
 docker compose --profile prod up -d
 ```
@@ -113,6 +117,7 @@ docker compose --profile prod up -d
 And the server should be accessible on port 8080
 
 To stop the server:
+
 ```bash
 docker compose --profile prod down
 ```

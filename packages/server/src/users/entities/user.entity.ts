@@ -6,6 +6,16 @@ export enum UserRole {
   USER = 'user',
 }
 
+const USER_ROLE_HIERARCHY: Record<UserRole, number> = {
+  [UserRole.USER]: 0,
+  [UserRole.MODERATOR]: 1,
+  [UserRole.ADMIN]: 2,
+};
+
+export function hasHigherOrEqualRole(user: UserRole, required: UserRole): boolean {
+  return USER_ROLE_HIERARCHY[user] >= USER_ROLE_HIERARCHY[required];
+}
+
 @Entity('users')
 export class User {
   @PrimaryColumn({ name: 'id' })
@@ -21,4 +31,10 @@ export class User {
     default: UserRole.USER,
   })
   role: UserRole;
+
+  @Column({
+    name: 'councils',
+    type: 'simple-array',
+  })
+  councils: string[];
 }
