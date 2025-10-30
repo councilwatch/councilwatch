@@ -16,13 +16,13 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string): Promise<User | null> {
-    const user = await this.usersService.getUser(email, false);
+    const user = await this.usersService.getUserByEmail(email, false);
 
     return user;
   }
 
   async register(registerDto: RegisterDto): Promise<Result> {
-    const user = await this.usersService.getUser(registerDto.email, false);
+    const user = await this.usersService.getUserByEmail(registerDto.email, false);
 
     if (user) {
       throw new ConflictException('A user with this email already exists. Please log in instead.');
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   async completeRegistration(user: User): Promise<Result> {
-    const existingUser = await this.usersService.getUser(user.email, false);
+    const existingUser = await this.usersService.getUserByEmail(user.email, false);
 
     if (existingUser) {
       throw new UnauthorizedException('Registration has already been completed for this email');
