@@ -41,7 +41,7 @@ cp docs/.env.development.example packages/server/.env.development
 To seed the database with some example data, run the following command (in Powershell if on Windows):
 
 ```bash
-cat .\scripts\seed.sql | docker exec -i councilwatch-db_development-1 psql -U councilwatch
+cat ./scripts/seed.sql | docker exec -i councilwatch-db_development-1 psql -U councilwatch
 ```
 
 ### Running
