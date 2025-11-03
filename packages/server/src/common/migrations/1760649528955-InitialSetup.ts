@@ -23,15 +23,7 @@ export class InitialSetup1760649528955 implements MigrationInterface {
     const eventsTable = new Table({
       name: this.EVENTS_TABLE,
       columns: [
-        {
-          name: 'id',
-          type: 'uuid',
-          isPrimary: true,
-          isUnique: true,
-          isNullable: false,
-          isGenerated: true,
-          generationStrategy: 'uuid',
-        },
+        { name: 'id', type: 'uuid', isPrimary: true, isUnique: true, isNullable: false },
         { name: 'title', type: 'varchar', isNullable: false },
         { name: 'description', type: 'text', isNullable: false },
         { name: 'date', type: 'timestamptz', isNullable: false },

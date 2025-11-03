@@ -1,6 +1,7 @@
 import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { v7 as uuidv7 } from 'uuid';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 import { Event } from './entities/event.entity';
@@ -14,6 +15,7 @@ export class EventsService {
 
   async create(createEventDto: CreateEventDto): Promise<Event> {
     const event = this.eventsRepository.create(createEventDto);
+    event.id = uuidv7();
 
     return this.eventsRepository.save(event);
   }
