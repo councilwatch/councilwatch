@@ -4,3 +4,4 @@
 **/out/
 .env.development
 .env
+.vscode
