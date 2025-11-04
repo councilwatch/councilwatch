@@ -19,9 +19,9 @@ export class Event {
   @ApiProperty({ description: 'The date and time the event will take place.' })
   date: Date;
 
-  @Column({ name: 'council_id' })
+  @Column({ name: 'council_id', type: 'int' })
   @ApiProperty({ description: 'The ID of the council associated with the event.' })
-  councilId: string;
+  councilId: number;
 
   @Column({ name: 'approved' })
   @ApiProperty({ description: 'Whether the event has been approved.' })

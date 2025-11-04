@@ -43,7 +43,7 @@ cp docs/.env.development.example packages/server/.env.development
 > with the extra argument `--build` to re-build the docker images
 
 ```bash
-# Start the database.
+# Start the database
 docker compose --profile dev up -d
 
 # Start the server
@@ -51,6 +51,9 @@ npm run start:server
 
 # Start the client
 npm run start:client
+
+# Seed the database
+node scripts/seed_sample_council_data.cjs | docker exec -i councilwatch-db_development-1 psql -U councilwatch
 
 # When you're done, stop the database. Remember, changes to the development database WILL be lost
 docker compose --profile dev down
