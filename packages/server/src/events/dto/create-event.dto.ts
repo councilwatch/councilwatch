@@ -1,5 +1,5 @@
 import { OmitType } from '@nestjs/swagger';
-import { IsNotEmpty, IsString, IsUUID, Length } from 'class-validator';
+import { IsInt, IsNotEmpty, IsString, Length } from 'class-validator';
 import { Event } from '../entities/event.entity';
 
 export class CreateEventDto extends OmitType(Event, ['id', 'approved']) {
@@ -17,6 +17,6 @@ export class CreateEventDto extends OmitType(Event, ['id', 'approved']) {
   @IsNotEmpty()
   date: Date;
 
-  @IsUUID()
-  councilId: string;
+  @IsInt()
+  councilId: number;
 }
