@@ -5,11 +5,13 @@ import type { FC } from 'react';
 export const Header: FC = () => {
   return (
     <header className="navbar">
-      <img
-        className="navbar__logo"
-        src="/images/flock-surveillance-camera.png"
-        alt="Flock Surveillance Camera"
-      />
+      <div className="navbar__logo">
+        <img
+          src="/images/flock-surveillance-camera-light.png"
+          alt="Flock Surveillance Camera"
+        />
+        <div className="navbar__app-name">CouncilWatch</div>
+      </div>
       <nav>
         {/* Placeholder for navigation links */}
         <ul className="navbar__links">
