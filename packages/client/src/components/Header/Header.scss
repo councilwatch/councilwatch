@@ -1,43 +1,78 @@
+@use "sass:map";
 @use '../../styles/variables' as vars;
 
+:root {
+  --navbar-background: #{map.get(vars.$theme-light, "bg-primary")};
+  --navbar-border-color: #{map.get(vars.$theme-light, "bg-primary")};
+  --navbar-color: #{map.get(vars.$theme-light, "text-primary")};
+  --navbar-link-color: #{map.get(vars.$theme-light, "text-link")};
+  --navbar-link-hover-color: #{map.get(vars.$theme-light, "text-link-hover")};
+  --navbar-shadow-color: oklab(0% 0 0/.1);
+
+  @media (prefers-color-scheme: dark) {
+    --navbar-background: #{map.get(vars.$theme-dark, "bg-secondary")};
+    --navbar-border-color: #{map.get(vars.$theme-dark, "border-secondary")};
+    --navbar-color: #{map.get(vars.$theme-dark, "text-primary")};
+    --navbar-link-color: #{map.get(vars.$theme-dark, "text-secondary")};
+    --navbar-link-hover-color: #{map.get(vars.$theme-dark, "text-link-hover")};
+    --navbar-shadow-color: oklab(0% 0 0/.2);
+  }
+}
+
 .navbar {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navbar-background);
+  border-bottom: 1px solid var(--navbar-border-color);
+  color: var(--navbar-color);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: vars.$header-height;
+  box-shadow: 0 20px 25px -5px var(--navbar-shadow-color), 0 8px 10px -6px var(--navbar-shadow-color);
+  z-index: vars.$z-index-site-header;
+
+  &__logo {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: linear-gradient(to right, #ebeef1, #000000);
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: vars.$header-height;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    left: 1.25rem;
 
-    &__logo {
-        width: 50px;
-        height: auto;
-        position: absolute;
-        left: 10px;
+    img {
+      height: 2.5rem;
+      width: auto;
+      margin-right: 0.75rem;
     }
+  }
 
-    &__links {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        margin: 0;
-        padding: 0;
+  &__app-name {
+    font-family: "Rock Salt", cursive;
+    font-size: vars.$text-xl;
+    color: var(--navbar-color);
+  }
 
-        li {
-            a {
-                text-decoration: none;
-                color: rgb(255, 255, 255);
-                font-size: 1.3rem;
-                font-weight: 600;
-                transition: 0.1s ease-in;
+  &__links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
 
-                &:hover {
-                    color: red;
-                }
-            }
+    li {
+      a {
+        text-decoration: none;
+        color: var(--navbar-link-color);
+        font-size: vars.$text-sm;
+        font-weight: 400;
+        transition: 0.1s ease-in;
+
+        &:hover {
+          color: var(--navbar-link-hover-color);
         }
+      }
     }
+  }
 }

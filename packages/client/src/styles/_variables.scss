@@ -1,1 +1,91 @@
+@use "sass:map";
+
+$color-palette: (
+  "neutral-900": #0f0f10,
+  "neutral-800": #161618,
+  "neutral-700": #212123,
+  "neutral-600": #2f2f32,
+  "neutral-500": #545457,
+  "neutral-400": #80838a,
+  "neutral-300": #a9aaae,
+  "neutral-200": #c5c5c5,
+  "neutral-100": #dbdbdb,
+  "neutral-50": #f0f0f0,
+  "neutral-0": #ffffff,
+
+  "red-900": #21080c,
+  "red-800": #421017,
+  "red-700": #631723,
+  "red-600": #841f2e,
+  "red-500": #b62b40,
+  "red-400": #d0394f,
+  "red-300": #dc6a7b,
+  "red-200": #e89ca7,
+  "red-100": #f3cdd3,
+);
+
+$theme-dark: (
+  "bg-primary": map.get($color-palette, "neutral-900"),
+  "bg-secondary": map.get($color-palette, "neutral-800"),
+  "bg-tertiary": map.get($color-palette, "neutral-700"),
+  "bg-action": map.get($color-palette, "red-600"),
+
+  "border-primary": map.get($color-palette, "neutral-200"),
+  "border-secondary": map.get($color-palette, "neutral-600"),
+  "border-muted": map.get($color-palette, "neutral-700"),
+  "border-action": map.get($color-palette, "red-500"),
+  "border-action-muted": map.get($color-palette, "red-600"),
+
+  "text-primary": map.get($color-palette, "neutral-0"),
+  "text-secondary": map.get($color-palette, "neutral-300"),
+  "text-tertiary": map.get($color-palette, "neutral-400"),
+  "text-muted": map.get($color-palette, "neutral-500"),
+  "text-ghostly": map.get($color-palette, "neutral-600"),
+  "text-action": map.get($color-palette, "red-400"),
+  "text-link": map.get($color-palette, "red-300"),
+  "text-link-hover": map.get($color-palette, "red-200"),
+);
+
+$theme-light: (
+  "bg-primary": map.get($color-palette, "neutral-0"),
+  "bg-secondary": map.get($color-palette, "neutral-50"),
+  "bg-tertiary": map.get($color-palette, "neutral-200"),
+  "bg-action": map.get($color-palette, "red-100"),
+
+  "border-primary": map.get($color-palette, "neutral-400"),
+  "border-secondary": map.get($color-palette, "neutral-100"),
+  "border-muted": map.get($color-palette, "neutral-50"),
+  "border-action": map.get($color-palette, "red-600"),
+  "border-action-muted": map.get($color-palette, "red-400"),
+
+  "text-primary": map.get($color-palette, "neutral-900"),
+  "text-secondary": map.get($color-palette, "neutral-800"),
+  "text-tertiary": map.get($color-palette, "neutral-700"),
+  "text-muted": map.get($color-palette, "neutral-300"),
+  "text-ghostly": map.get($color-palette, "neutral-200"),
+  "text-action": map.get($color-palette, "red-600"),
+  "text-link": map.get($color-palette, "red-600"),
+  "text-link-hover": map.get($color-palette, "red-700"),
+);
+
+$breakpoint-mobile: 600px;
+
+$font-family-base: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$font-family-branding: 'Rock Salt', serif;
+$font-family-heading: 'Playfair Display', serif;
+
 $header-height: 75px;
+
+$text-xs: 0.75rem;
+$text-sm: 0.875rem;
+$text-base: 1rem;
+$text-lg: 1.125rem;
+$text-xl: 1.25rem;
+$text-2xl: 1.5rem;
+$text-3xl: 1.875rem;
+$text-4xl: 2.25rem;
+$text-5xl: 3rem;
+
+$z-index-popover: 1001;
+$z-index-site-header: 1000;

@@ -1,8 +1,29 @@
+@use "sass:map";
 @use '../../styles/mixins' as mixins;
+@use '../../styles/variables' as vars;
+
+:root {
+  --footer-background: #{map.get(vars.$theme-light, "bg-secondary")};
+  --footer-border-color: #{map.get(vars.$theme-light, "border-secondary")};
+  --footer-color: #{map.get(vars.$theme-light, "text-secondary")};
+
+  @media (prefers-color-scheme: dark) {
+    --footer-background: #{map.get(vars.$theme-dark, "bg-secondary")};
+    --footer-border-color: #{map.get(vars.$theme-dark, "border-secondary")};
+    --footer-color: #{map.get(vars.$theme-dark, "text-secondary")};
+  }
+}
 
 .footer {
-    @include mixins.flex-center;
-    width: 100%;
-    background: linear-gradient(to left, #ebeef1, #000000);
-    color: #fff;
+  @include mixins.flex-center;
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--footer-background);
+  border-top: 1px solid var(--footer-border-color);
+  color: var(--footer-color);
+  padding: 1.5rem;
+
+  p {
+    margin: 0;
+  }
 }
