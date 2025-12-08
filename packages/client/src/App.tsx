@@ -11,6 +11,7 @@ import { ReviewerDashboard } from './pages/ReviewerDashboard';
 import { ReviewerInvitation } from './pages/ReviewerInvitation';
 import { ReviewerRegistration } from './pages/ReviewerRegistration';
 import { UserRegistration } from './pages/UserRegistration';
+import { Resources } from './pages/Resources/Resources';
 
 export const App = () => {
   return (
@@ -28,6 +29,7 @@ export const App = () => {
             <Route path="/meetings/:id/rsvp" element={<MeetingRSVP />} />
             <Route path="/reviewer/invite" element={<ReviewerInvitation />} />
             <Route path="/reviewer/register" element={<ReviewerRegistration />} />
+            <Route path="/resources" element={<Resources />} />
           </Routes>
         </main>
         <Footer />
