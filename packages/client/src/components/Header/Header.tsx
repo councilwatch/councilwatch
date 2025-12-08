@@ -22,6 +22,9 @@ export const Header: FC = () => {
           <li>
             <a href="/register">Register</a>
           </li>
+          <li>
+            <a href="/resources">Resources</a>
+          </li>
           {/* Add conditional links for logged-in users/reviewers */}
         </ul>
       </nav>
