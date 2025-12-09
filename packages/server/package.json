@@ -31,7 +31,7 @@
     "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-fastify": "11.1.6",
     "@nestjs/schedule": "6.0.1",
-    "@nestjs/swagger": "11.2.1",
+    "@nestjs/swagger": "^11.2.3",
     "@nestjs/throttler": "^6.4.0",
     "@nestjs/typeorm": "11.0.0",
     "bcrypt": "6.0.0",
@@ -47,7 +47,7 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
-    "@nestjs/cli": "11.0.10",
+    "@nestjs/cli": "^11.0.14",
     "@nestjs/schematics": "11.0.9",
     "@nestjs/testing": "11.1.6",
     "@types/bcrypt": "6.0.0",

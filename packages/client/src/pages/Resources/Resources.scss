@@ -1,0 +1,48 @@
+@use '../../styles/mixins' as mixins;
+
+.resources-sticky-nav {
+    @include mixins.flex-center(column);
+    width: 60vw;
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(to right, #000000, rgb(99, 5, 5));
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.resources-sticky-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.resources-sticky-nav a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.resources-sticky-nav a:hover {
+    text-decoration: underline;
+}
+
+.email-block {
+    background: #f8f9fa !important;
+    color: #222222 !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 2rem !important;
+    font-family: ui-monospace, monospace !important;
+    font-size: 0.95rem !important;
+    white-space: pre-wrap !important;
+    overflow-x: auto !important;
+    margin: 2rem 0 !important;
+    width: 30vw;
+}
